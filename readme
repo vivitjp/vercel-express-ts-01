@@ -1,0 +1,61 @@
+===================================
+■目的
+===================================
+
+フリーのサーバーにREST構築
+外部からのアクセス(CRUD)を実現
+少なくとも1つのエンドポイントで実現
+
+===================================
+■環境
+===================================
+
+HOST: Vercel?(他の選択肢)
+SERVER: Nodejs + Express
+
+DB/File: ???
+
+言語: TypeScript
+TEST: jest
+CICD: Git Actions
+
+===================================
+■GitHub Next.js サンプル
+===================================
+
+https://github.com/vercel/next.js/tree/master/examples
+
+===================================
+■SWR
+===================================
+SWR は Vercel が開発したデータフェッチのための React Hooks ライブラリ
+"SWR"と言う名前は stale-while-revalidate の頭文字、処理と設計も
+
+const fetcher = (url: string): Promise<any> => fetch(url).then(res => res.json());
+
+import useSWR from 'swr'
+
+function Profile() {
+  const { data, error } = useSWR('/api/user', fetcher)
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+
+  return <div>hello {data.name}!</div>
+}
+
+//依存フェッチ
+function MyProjects () {
+  const { data: user } = useSWR('/api/user', fetcher)
+- const { data: projects } = useSWR(() => '/api/projects?uid=' + user.id, fetcher)
++ const { data: projects } = useSWR(user ? `/api/projects?uid=${user.id}` : null, fetcher)
+
+  // 関数を渡す場合、SWRは返り値を`key`として使用
+  // 関数がスローまたは falsy な値を返す場合、
+  // SWRはいくつかの依存関係が準備できてないことを知ることができます。
+  // この例では、`user.id`は`user`がロードされてない時にスローします。
+
+  if (!projects) return 'loading...'
+
+  return 'You have ' + projects.length + ' projects'
+
