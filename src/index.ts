@@ -12,7 +12,7 @@ app.get('/', (req: any, res: any) => {
   }
 });
 
-//app.listen(process.env.PORT || 3000); test
+//app.listen(process.env.PORT || 3000); test2
 app.listen({ port: 3000 }, () => {
   console.log(`Server ready at http://localhost:3000`);
 });
