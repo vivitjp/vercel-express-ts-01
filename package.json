@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node src",
-    "build": "rimraf dist && tsc",
-    "deploy": "npm run build && vercel --prod"
+    "build": "rimraf dist && tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
