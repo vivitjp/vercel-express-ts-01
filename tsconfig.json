@@ -9,5 +9,5 @@
     "moduleResolution": "node"
   },
   "include": ["./src/**/*"],
-  "exclude": ["./src/test/*"]
+  "exclude": ["src/__tests__/*"]
 }
