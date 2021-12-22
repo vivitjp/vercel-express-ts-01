@@ -6,13 +6,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req: any, res: any) => {
   try {
-    res.send({ name: "hoge", address: "fuga", age: 13 });
+    res.send({ name: "john", address: "tokyo", age: 13 });
   } catch (error) {
     res.sendStatus(500);
   }
 });
 
-//app.listen(process.env.PORT || 3000); test2
+//app.listen(process.env.PORT || 3000);
 app.listen({ port: 3000 }, () => {
   console.log(`Server ready at http://localhost:3000`);
 });
