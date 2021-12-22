@@ -1,4 +1,2 @@
-.vercel
 node_modules
-.vercel
 .github/workflows/node.js.yml

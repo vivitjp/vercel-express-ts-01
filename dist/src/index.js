@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.get('/', function (req, res) {
     try {
-        res.send({ name: "hoge", address: "fuga" });
+        res.send({ name: "hoge" });
     }
     catch (error) {
         res.sendStatus(500);
@@ -17,6 +17,3 @@ app.listen({ port: 3000 }, function () {
 });
 console.log('starts');
 exports.default = app;
-
-
-//   ADD テスト！！！！！！！！！！！！！！！！！！！！！！
