@@ -6,7 +6,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req: any, res: any) => {
   try {
-    res.send({ name: "hoge", address: "fuga" });
+    res.send({ name: "hoge", address: "fuga", age: 13 });
   } catch (error) {
     res.sendStatus(500);
   }
