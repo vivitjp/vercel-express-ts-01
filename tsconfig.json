@@ -1,13 +1,26 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/src",
-    "target": "es5",
-    "sourceMap": false,
+    //Style
+    "target": "es2018",
+    "module": "commonjs",
+    "allowJs": true,
     "strict": true,
+
+    //Input & OUtput
+    "baseUrl": "./",
+    "outDir": "./dist",
+
+    //Debug
+    "sourceMap": false,
+    "esModuleInterop": true,
     "removeComments": true,
-    "moduleResolution": "node"
+    //"moduleResolution": "node",
+    "incremental": true,
+
+    // "allowSyntheticDefaultImports": true,  //"esModuleInterop"で自動で有効
+//    "skipLibCheck": true,
+//    "forceConsistentCasingInFileNames": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["./src/__tests__/*"]
+  "include": ["./src/**/*", "*.(ts|js)"],
+  "exclude": ["./src/**/__tests__/*"]
 }
