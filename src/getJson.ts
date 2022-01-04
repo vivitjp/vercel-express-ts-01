@@ -1,6 +1,7 @@
-import arr_sum from './lib/math';
+interface props {
+  (name?: string, age?: number): {}
+}
 
-export const getJson = (name: string = "Smith") => {
-  const sum = arr_sum([1, 2, 3]) || 0;
-  return { name, address: "Osaka", age: sum };
+export const getJson: props = (name, age) => {
+  return { name: name || "John", age: age || 12 };
 }
