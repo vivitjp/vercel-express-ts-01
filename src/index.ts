@@ -1,8 +1,7 @@
 import express from 'express'
 const app: express.Express = express();
 
-import { getJson } from './getJson';
-import { getJsonAsync } from './getJsonAsync';
+import { getJson } from './lib/getJson';
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")
@@ -15,9 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req: any, res: any) => {
   try {
-    const ans1 = await getJsonAsync("Gates");
     const ans2 = getJson("Steve");
-    res.send([ans1, ans2]);
+    res.send(ans2);
   } catch (error) {
     res.sendStatus(500);
   }
