@@ -1,4 +1,9 @@
-const comp_department: Array<{}> = [
+export interface IFCompDep {
+  K: string;
+  E: string;
+}
+
+const comp_dep: Array<IFCompDep> = [
   { "K": "マーケティング部", "E": "Marketing Department" },
   { "K": "営業推進部", "E": "Business Promotion Department" },
   { "K": "営業部", "E": "Business Department" },
@@ -30,4 +35,9 @@ const comp_department: Array<{}> = [
   { "K": "流通部", "E": "Logistics Department" },
 ]
 
-export default comp_department;
+const arr_size: number = comp_dep.length;
+
+export const getCompDep = (): IFCompDep => {
+  const idx = Math.floor(Math.random() * arr_size);
+  return comp_dep[idx]
+}

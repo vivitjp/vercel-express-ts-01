@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "nodemon",
+    "bar": "rimraf dist && tsc && node ./dist",
+    "dev": "ts-node-dev --respawn src",
     "build": "rimraf dist && tsc",
     "test": "jest"
   },
@@ -16,6 +18,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.4"
   },
   "dependencies": {

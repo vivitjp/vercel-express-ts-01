@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const makeJson_1 = __importDefault(require("src/lib/makeJson"));
 const app = (0, express_1.default)();
-const makeJson_1 = __importDefault(require("./lib/makeJson"));
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -13,17 +13,16 @@ app.use((req, res, next) => {
 });
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.get('/', async (req, res) => {
-    try {
-        const list = (0, makeJson_1.default)(3);
-        res.send(list);
-    }
-    catch (error) {
-        res.sendStatus(500);
-    }
+const router = express_1.default.Router();
+router.get('/apiget', (req, res) => {
+    const numStr = req.query.nums;
+    const numInt = parseInt(numStr) || 10;
+    const list = (0, makeJson_1.default)(numInt);
+    res.send(list);
 });
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server ready at http://localhost:${port}`);
+router.post('/apipost', (req, res) => {
+    const str_out = "Morning " + req.query.name + "\n";
+    res.send(str_out);
 });
-exports.default = app;
+app.use(router);
+app.listen(3000, () => { console.log('Example app listening on port 3000!'); });

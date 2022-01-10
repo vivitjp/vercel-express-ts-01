@@ -1,7 +1,7 @@
 import express from 'express'
 const app: express.Express = express();
 
-import { getJson } from './lib/getJson';
+import listWorker from './lib/makeJson';
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")
@@ -12,12 +12,16 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', async (req: any, res: any) => {
-  try {
-    const ans2 = getJson("Steve");
-    res.send(ans2);
-  } catch (error) {
-    res.sendStatus(500);
+app.get('/', async (req: express.Request, res: express.Response) => {
+  res.sendStatus(404);
+});
+
+app.get('/:count', function (req: express.Request, res: express.Response) {
+  const count = parseInt(req.params.count);
+  if (count > 1) {
+    res.send(listWorker(count));
+  } else {
+    res.send({ "MSG": "Invalid Parameter" });
   }
 });
 

@@ -1,4 +1,8 @@
-const comp_name_parts: Array<{}> = [
+//パーツ
+interface IFCompParts {
+  P: string;
+}
+const comp_parts: Array<IFCompParts> = [
   { "P": "アクト" },
   { "P": "アジア" },
   { "P": "アット" },
@@ -17,7 +21,7 @@ const comp_name_parts: Array<{}> = [
   { "P": "オレンジ" },
   { "P": "キャリア" },
   { "P": "クック" },
-  { "P": "ぐるなび" },
+  { "P": "グルメ" },
   { "P": "グローバル" },
   { "P": "ゲイン" },
   { "P": "コム" },
@@ -91,5 +95,55 @@ const comp_name_parts: Array<{}> = [
   { "P": "ワークス" },
   { "P": "ワイヤー" },
 ]
+const parts_size: number = comp_parts.length;
 
-export default comp_name_parts;
+//END
+interface IFCompEnd {
+  P: string;
+}
+const comp_end: Array<IFCompEnd> = [
+  { "P": "銀行" },
+  { "P": "工業" },
+  { "P": "興行" },
+  { "P": "バンク" },
+  { "P": "実業" },
+  { "P": "貿易" },
+  { "P": "商店" },
+  { "P": "企画" },
+  { "P": "商事" },
+  { "P": "不動産" },
+  { "P": "製作所" },
+  { "P": "研究所" },
+  //{ "P": "ホールディングス" },
+  { "P": "製薬" },
+  { "P": "物流" },
+  { "P": "運輸" },
+  { "P": "設計" },
+  { "P": "事務所" },
+  { "P": "建築" },
+  { "P": "商会" },
+  { "P": "通商" },
+  { "P": "林業" },
+  { "P": "開発" },
+]
+const end_size: number = comp_end.length;
+
+//NAME
+export interface IFCompany {
+  K: string;
+}
+
+export const getCompany = (): IFCompany => {
+  const parts1_idx = Math.floor(Math.random() * parts_size);
+  const parts2_idx = Math.floor(Math.random() * parts_size);
+  const end_idx = Math.floor(Math.random() * end_size);
+
+  const [FRONT, BACK] = !!(Math.random() > 0.5) ? ["株式会社", ""] : ["", "株式会社"];
+
+  const name = FRONT
+    + comp_parts[parts1_idx]["P"]
+    + comp_parts[parts2_idx]["P"]
+    + comp_end[end_idx]["P"]
+    + BACK;
+  return { K: name }
+}

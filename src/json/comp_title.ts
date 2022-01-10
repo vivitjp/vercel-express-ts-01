@@ -1,4 +1,11 @@
-const comp_title: Array<{}> = [
+export interface IFCompTitle {
+  L: string;
+  C: string;
+  K: string;
+  E: string;
+}
+
+const comp_title: Array<IFCompTitle> = [
   { "L": "1", "C": "エグゼクティブ", "K": "取締役会長", "E": "Chairperson" },
   { "L": "1", "C": "エグゼクティブ", "K": "理事長", "E": "Board Chairman" },
   { "L": "1", "C": "エグゼクティブ", "K": "取締役副会長", "E": "Vice Chairperson" },
@@ -9,10 +16,10 @@ const comp_title: Array<{}> = [
   { "L": "1", "C": "エグゼクティブ", "K": "常務取締役", "E": "Managing Director" },
   { "L": "1", "C": "エグゼクティブ", "K": "取締役", "E": "Director" },
   { "L": "1", "C": "エグゼクティブ", "K": "社外取締役", "E": "Outside Director" },
-  { "L": "1", "C": "エグゼクティブ", "K": "相談役", "E": "Senior Adviser" },
-  { "L": "1", "C": "エグゼクティブ", "K": "監査役", "E": "Auditor" },
-  { "L": "1", "C": "エグゼクティブ", "K": "執行役員", "E": "Corporate Officer" },
-  { "L": "1", "C": "エグゼクティブ", "K": "参与", "E": "Counselor" },
+  //  { "L": "1", "C": "エグゼクティブ", "K": "相談役", "E": "Senior Adviser" },
+  //  { "L": "1", "C": "エグゼクティブ", "K": "監査役", "E": "Auditor" },
+  //  { "L": "1", "C": "エグゼクティブ", "K": "執行役員", "E": "Corporate Officer" },
+  //  { "L": "1", "C": "エグゼクティブ", "K": "参与", "E": "Counselor" },
   { "L": "1", "C": "エグゼクティブ", "K": "最高経営責任者", "E": "CEO(Chief Executive Officer)" },
   { "L": "1", "C": "エグゼクティブ", "K": "最高業務執行責任者", "E": "COO(Chief Operating Officer)" },
   { "L": "1", "C": "エグゼクティブ", "K": "最高財務責任者", "E": "CFO(Chief Financial Officer)" },
@@ -48,4 +55,9 @@ const comp_title: Array<{}> = [
   { "L": "5", "C": "役職なし", "K": "インターン", "E": "Intern" },
 ]
 
-export default comp_title;
+const arr_size: number = comp_title.length;
+
+export const getCompTitle = (): IFCompTitle => {
+  const idx = Math.floor(Math.random() * arr_size);
+  return comp_title[idx]
+}
