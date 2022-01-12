@@ -1,7 +1,7 @@
 import express from 'express'
 const app: express.Express = express();
 
-import listWorker from './lib/makeJson';
+import listWorker from './datalib/makeJson';
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")

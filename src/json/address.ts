@@ -1,10 +1,10 @@
-export interface IFAddress {
+interface IFJsonAddress {
   K: string;
   G: string;
   C: string;
 }
 
-const address: Array<IFAddress> = [
+const address: Array<IFJsonAddress> = [
   { "K": "神奈川県", "G": "", "C": "横浜市" },
   { "K": "大阪府", "G": "", "C": "大阪市" },
   { "K": "愛知県", "G": "", "C": "名古屋市" },
@@ -1750,11 +1750,17 @@ const address: Array<IFAddress> = [
 
 const city_size: number = address.length;
 
+export interface IFAddress {
+  KEN: string;
+  GUN: string;
+  CITY: string;
+}
 export const getAddress = (): IFAddress => {
   const idx = Math.floor(Math.random() * city_size);
-  const K = address[idx]['K']
-  const G = address[idx]['G']
-  const C = address[idx]['C']
 
-  return { K, G, C }
+  return {
+    KEN: address[idx]['K'],
+    GUN: address[idx]['G'],
+    CITY: address[idx]['C']
+  }
 }

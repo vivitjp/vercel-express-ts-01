@@ -35,6 +35,9 @@ const comp_dep = [
 const arr_size = comp_dep.length;
 const getCompDep = () => {
     const idx = Math.floor(Math.random() * arr_size);
-    return comp_dep[idx];
+    return {
+        JP: comp_dep[idx]["K"],
+        EN: comp_dep[idx]["E"],
+    };
 };
 exports.getCompDep = getCompDep;

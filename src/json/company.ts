@@ -130,7 +130,7 @@ const end_size: number = comp_end.length;
 
 //NAME
 export interface IFCompany {
-  K: string;
+  JP: string;
 }
 
 export const getCompany = (): IFCompany => {
@@ -138,12 +138,14 @@ export const getCompany = (): IFCompany => {
   const parts2_idx = Math.floor(Math.random() * parts_size);
   const end_idx = Math.floor(Math.random() * end_size);
 
-  const [FRONT, BACK] = !!(Math.random() > 0.5) ? ["株式会社", ""] : ["", "株式会社"];
+  const KABU = "株式会社"
+  const [FRONT, BACK] = !!(Math.random() > 0.5) ? [KABU, ""] : ["", KABU];
 
   const name = FRONT
     + comp_parts[parts1_idx]["P"]
     + comp_parts[parts2_idx]["P"]
     + comp_end[end_idx]["P"]
     + BACK;
-  return { K: name }
+
+  return { JP: name }
 }

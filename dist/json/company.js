@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCompName = void 0;
+exports.getCompany = void 0;
 const comp_parts = [
     { "P": "アクト" },
     { "P": "アジア" },
@@ -20,7 +20,7 @@ const comp_parts = [
     { "P": "オレンジ" },
     { "P": "キャリア" },
     { "P": "クック" },
-    { "P": "ぐるなび" },
+    { "P": "グルメ" },
     { "P": "グローバル" },
     { "P": "ゲイン" },
     { "P": "コム" },
@@ -108,7 +108,6 @@ const comp_end = [
     { "P": "不動産" },
     { "P": "製作所" },
     { "P": "研究所" },
-    { "P": "ホールディングス" },
     { "P": "製薬" },
     { "P": "物流" },
     { "P": "運輸" },
@@ -121,14 +120,17 @@ const comp_end = [
     { "P": "開発" },
 ];
 const end_size = comp_end.length;
-const getCompName = () => {
+const getCompany = () => {
     const parts1_idx = Math.floor(Math.random() * parts_size);
     const parts2_idx = Math.floor(Math.random() * parts_size);
     const end_idx = Math.floor(Math.random() * end_size);
-    const FB_flag = Math.floor(Math.random() * 1);
-    const FRONT = FB_flag ? "株式会社" : "";
-    const BACK = FB_flag ? "" : "株式会社";
-    const name = FRONT + comp_parts[parts1_idx] + comp_parts[parts2_idx] + comp_end[end_idx] + BACK;
-    return { K: name };
+    const KABU = "株式会社";
+    const [FRONT, BACK] = !!(Math.random() > 0.5) ? [KABU, ""] : ["", KABU];
+    const name = FRONT
+        + comp_parts[parts1_idx]["P"]
+        + comp_parts[parts2_idx]["P"]
+        + comp_end[end_idx]["P"]
+        + BACK;
+    return { JP: name };
 };
-exports.getCompName = getCompName;
+exports.getCompany = getCompany;

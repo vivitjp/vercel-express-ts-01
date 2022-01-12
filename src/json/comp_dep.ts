@@ -1,9 +1,9 @@
-export interface IFCompDep {
+interface IFJsonCompDep {
   K: string;
   E: string;
 }
 
-const comp_dep: Array<IFCompDep> = [
+const comp_dep: Array<IFJsonCompDep> = [
   { "K": "マーケティング部", "E": "Marketing Department" },
   { "K": "営業推進部", "E": "Business Promotion Department" },
   { "K": "営業部", "E": "Business Department" },
@@ -37,7 +37,15 @@ const comp_dep: Array<IFCompDep> = [
 
 const arr_size: number = comp_dep.length;
 
+export interface IFCompDep {
+  JP: string;
+  EN: string;
+}
+
 export const getCompDep = (): IFCompDep => {
   const idx = Math.floor(Math.random() * arr_size);
-  return comp_dep[idx]
+  return {
+    JP: comp_dep[idx]["K"],
+    EN: comp_dep[idx]["E"],
+  }
 }

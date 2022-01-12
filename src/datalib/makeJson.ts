@@ -5,17 +5,20 @@ import { getCompDep, IFCompDep } from '../json/comp_dep';
 import { getCompTitle, IFCompTitle } from '../json/comp_title';
 
 interface objNameListType {
-  lastname: string;
-  firstname: string;
-  sex?: string;
-  age?: number;
-  ken?: string;
-  city?: string;
-  postal?: string;
-  cell?: string;
-  company?: string;
-  department?: string;
-  title?: string;
+  lastname: string         //姓
+  firstname: string        //名前
+  sex?: string             //
+  age?: number
+  ken?: string
+  city?: string
+  postal?: string
+  cell?: string
+  company?: string
+  department?: string
+  title?: string
+  start_date?: string,    //日付(開始) TimeStamp
+  end_date?: string,      //日付(終了) TimeStamp
+  act?: boolean           //アクティブ是非
 }
 
 function getAge(min: number, max: number) {
@@ -39,11 +42,13 @@ const listWorker = (listSize: number = 10): objNameListType[] => {
       firstname: person["firstname"],
       sex: person["sex"],
       age: getAge(22, 50),
-      ken: address["K"],
-      city: address["G"] + address["C"],
-      company: getCompany()["K"],
-      department: getCompDep()["K"],
-      title: getCompTitle()["K"],
+      ken: address["KEN"],
+      city: address["GUN"] + address["CITY"],
+      company: getCompany()["JP"],
+      department: getCompDep()["JP"],
+      title: getCompTitle()["JP"],
+      start_date: String(new Date()),
+      act: true,
     }
     retObj.push(item);
   }

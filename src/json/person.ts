@@ -294,9 +294,9 @@ export const getPerson = (): IFPerson => {
   const idxLast = Math.floor(Math.random() * lastname_size);
   const idxFirst = Math.floor(Math.random() * firstname_size);
 
-  const lastname = lastname_arr[idxLast]["K"]
-  const firstname = firstname_arr[idxFirst]["K"]
-  const sex = firstname_arr[idxFirst]["X"] === "M" ? "男" : "女"
-
-  return { lastname, firstname, sex }
+  return {
+    lastname: lastname_arr[idxLast]["K"],
+    firstname: firstname_arr[idxFirst]["K"],
+    sex: firstname_arr[idxFirst]["X"] === "M" ? "男" : "女"
+  }
 }

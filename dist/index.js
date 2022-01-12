@@ -14,12 +14,15 @@ app.use((req, res, next) => {
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.get('/', async (req, res) => {
-    try {
-        const list = (0, makeJson_1.default)(3);
-        res.send(list);
+    res.sendStatus(404);
+});
+app.get('/:count', function (req, res) {
+    const count = parseInt(req.params.count);
+    if (count > 1) {
+        res.send((0, makeJson_1.default)(count));
     }
-    catch (error) {
-        res.sendStatus(500);
+    else {
+        res.send({ "MSG": "Invalid Parameter" });
     }
 });
 const port = process.env.PORT || 3000;

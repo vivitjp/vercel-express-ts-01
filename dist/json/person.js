@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPersonFullname = void 0;
+exports.getPerson = void 0;
 const lastname_arr = [
     { "K": "佐藤", "H": "さとう" },
     { "K": "加藤", "H": "かとう" },
@@ -273,12 +273,13 @@ const firstname_arr = [
     { "K": "幸之介", "H": "こうのすけ", "X": "M" },
 ];
 const firstname_size = firstname_arr.length;
-const getPersonFullname = () => {
+const getPerson = () => {
     const idxLast = Math.floor(Math.random() * lastname_size);
     const idxFirst = Math.floor(Math.random() * firstname_size);
-    const lastname = lastname_arr[idxLast]["K"];
-    const firstname = firstname_arr[idxFirst]["K"];
-    const sex = firstname_arr[idxFirst]["X"];
-    return { lastname, firstname, sex };
+    return {
+        lastname: lastname_arr[idxLast]["K"],
+        firstname: firstname_arr[idxFirst]["K"],
+        sex: firstname_arr[idxFirst]["X"] === "M" ? "男" : "女"
+    };
 };
-exports.getPersonFullname = getPersonFullname;
+exports.getPerson = getPerson;
