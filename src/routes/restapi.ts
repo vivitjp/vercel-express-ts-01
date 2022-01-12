@@ -1,5 +1,5 @@
 import express from 'express'
-import namePersonName from 'src/lib/makeJson'
+import getPerson from '../datalib/makeJson'
 
 const app: express.Express = express()
 
@@ -21,7 +21,7 @@ router.get('/apiget', (req: express.Request, res: express.Response) => {
 
   const numStr: string = req.query.nums as string;
   const numInt: number = parseInt(numStr) || 10;
-  const list = namePersonName(numInt)
+  const list = getPerson(numInt)
   res.send(list)
 })
 

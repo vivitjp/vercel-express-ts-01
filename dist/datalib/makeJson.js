@@ -26,6 +26,8 @@ const listWorker = (listSize = 10) => {
             company: (0, company_1.getCompany)()["JP"],
             department: (0, comp_dep_1.getCompDep)()["JP"],
             title: (0, comp_title_1.getCompTitle)()["JP"],
+            start_date: String(new Date()),
+            act: true,
         };
         retObj.push(item);
     }
