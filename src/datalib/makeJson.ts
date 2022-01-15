@@ -5,8 +5,8 @@ import { getCompDep, IFCompDep } from '../json/comp_dep';
 import { getCompTitle, IFCompTitle } from '../json/comp_title';
 
 interface objNameListType {
-  lastname: string         //姓
-  firstname: string        //名前
+  last_name: string         //姓
+  first_name: string        //名前
   sex?: string             //
   age?: number
   ken?: string
@@ -38,8 +38,8 @@ const listWorker = (listSize: number = 10): objNameListType[] => {
     const address: IFAddress = getAddress();
 
     const item: objNameListType = {
-      lastname: person["lastname"],
-      firstname: person["firstname"],
+      last_name: person["last_name"],
+      first_name: person["first_name"],
       sex: person["sex"],
       age: getAge(22, 50),
       ken: address["KEN"],

@@ -3,7 +3,7 @@ interface IFLastName {
   H: string;
 }
 
-const lastname_arr: Array<IFLastName> = [
+const last_name_arr: Array<IFLastName> = [
   { "K": "佐藤", "H": "さとう" },
   { "K": "加藤", "H": "かとう" },
   { "K": "吉田", "H": "よしだ" },
@@ -206,7 +206,7 @@ const lastname_arr: Array<IFLastName> = [
   { "K": "片岡", "H": "かたおか" },
 ]
 
-const lastname_size: number = lastname_arr.length;
+const last_name_size: number = last_name_arr.length;
 
 interface IFFirstName {
   K: string;
@@ -214,7 +214,7 @@ interface IFFirstName {
   X: string;
 }
 
-const firstname_arr: Array<IFFirstName> = [
+const first_name_arr: Array<IFFirstName> = [
   { "K": "結", "H": "ゆい", "X": "F" },
   { "K": "栞", "H": "しおり", "X": "F" },
   { "K": "巴", "H": "ともえ", "X": "F" },
@@ -283,20 +283,20 @@ const firstname_arr: Array<IFFirstName> = [
   { "K": "幸之介", "H": "こうのすけ", "X": "M" },
 ]
 
-const firstname_size: number = firstname_arr.length;
+const first_name_size: number = first_name_arr.length;
 
 export interface IFPerson {
-  lastname: string;
-  firstname: string;
+  last_name: string;
+  first_name: string;
   sex: string;
 }
 export const getPerson = (): IFPerson => {
-  const idxLast = Math.floor(Math.random() * lastname_size);
-  const idxFirst = Math.floor(Math.random() * firstname_size);
+  const idxLast = Math.floor(Math.random() * last_name_size);
+  const idxFirst = Math.floor(Math.random() * first_name_size);
 
   return {
-    lastname: lastname_arr[idxLast]["K"],
-    firstname: firstname_arr[idxFirst]["K"],
-    sex: firstname_arr[idxFirst]["X"] === "M" ? "男" : "女"
+    last_name: last_name_arr[idxLast]["K"],
+    first_name: first_name_arr[idxFirst]["K"],
+    sex: first_name_arr[idxFirst]["X"] === "M" ? "男" : "女"
   }
 }
