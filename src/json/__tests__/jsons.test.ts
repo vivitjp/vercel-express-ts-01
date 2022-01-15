@@ -15,8 +15,8 @@ describe('フェイクJSONデータ型テスト', () => {
 
   test('人: getPerson() の戻り値オブジェクトが持つ型', () => {
     expect(getPerson()).toEqual({
-      "lastname": expect.any(String),
-      "firstname": expect.any(String),
+      "last_name": expect.any(String),
+      "first_name": expect.any(String),
       "sex": expect.any(String),
     })
   });
